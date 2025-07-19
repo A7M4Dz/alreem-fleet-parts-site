@@ -1,12 +1,24 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import Header from '@/components/Header';
+import HeroSection from '@/components/HeroSection';
+import BrandsSection from '@/components/BrandsSection';
+import QuotationSection from '@/components/QuotationSection';
+import LocationSection from '@/components/LocationSection';
+import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const [language, setLanguage] = useState<'en' | 'ar'>('en');
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      <Header language={language} onLanguageChange={setLanguage} />
+      <HeroSection language={language} />
+      <BrandsSection language={language} />
+      <QuotationSection language={language} />
+      <LocationSection language={language} />
+      <Footer language={language} />
+      <WhatsAppButton />
     </div>
   );
 };
