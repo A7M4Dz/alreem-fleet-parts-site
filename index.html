@@ -1,27 +1,974 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ALREEM - Premium Truck Parts for IVECO, MAN & ZF</title>
-    <meta name="description" content="Your trusted partner for quality commercial vehicle components. IVECO, MAN & ZF truck parts and accessories." />
-    <meta name="author" content="ALREEM Truck Parts" />
+    <meta name="description" content="Your trusted partner for quality commercial vehicle components. IVECO, MAN & ZF truck parts and accessories.">
+    <meta name="author" content="ALREEM Truck Parts">
+    
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ALREEM - Premium Truck Parts for IVECO, MAN & ZF">
+    <meta property="og:description" content="Your trusted partner for quality commercial vehicle components. IVECO, MAN & ZF truck parts and accessories.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@lovable_dev">
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png">
 
-    <meta property="og:title" content="ALREEM - Premium Truck Parts for IVECO, MAN & ZF" />
-    <meta property="og:description" content="Your trusted partner for quality commercial vehicle components. IVECO, MAN & ZF truck parts and accessories." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <style>
+        :root {
+            /* Colors (HSL) */
+            --background: 0 0% 100%;
+            --foreground: 0 0% 17%;
+            --card: 0 0% 100%;
+            --card-foreground: 0 0% 17%;
+            --primary: 0 0% 10%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 0 0% 96%;
+            --secondary-foreground: 0 0% 17%;
+            --muted: 0 0% 96%;
+            --muted-foreground: 0 0% 40%;
+            --accent: 142 76% 36%;
+            --accent-foreground: 0 0% 98%;
+            --destructive: 0 84% 60%;
+            --destructive-foreground: 0 0% 98%;
+            --border: 0 0% 90%;
+            --input: 0 0% 90%;
+            --ring: 0 0% 10%;
+            
+            /* ALREEM Design System */
+            --text-primary: 0 0% 17%;
+            --text-secondary: 0 0% 40%;
+            --whatsapp: 142 76% 36%;
+            --section-bg: 0 0% 96%;
+            
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 96%));
+            --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(0 0% 98%));
+            
+            /* Shadows */
+            --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.1);
+            --shadow-hover: 0 8px 30px -6px hsl(0 0% 0% / 0.15);
+            --shadow-floating: 0 8px 32px hsl(142 76% 36% / 0.3);
+            
+            /* Animations */
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            --radius: 0.5rem;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 500;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-primary:hover {
+            background-color: hsl(var(--primary) / 0.9);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: hsl(var(--primary));
+            border: 1px solid hsl(var(--border));
+        }
+
+        .btn-outline:hover {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-whatsapp {
+            background-color: hsl(var(--whatsapp));
+            color: hsl(var(--accent-foreground));
+        }
+
+        .btn-whatsapp:hover {
+            background-color: hsl(var(--whatsapp) / 0.9);
+            transform: scale(1.05);
+        }
+
+        .card {
+            background: var(--gradient-card);
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
+            box-shadow: var(--shadow-card);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* RTL Support */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="rtl"] .flex {
+            flex-direction: row-reverse;
+        }
+
+        /* Header */
+        .header {
+            background-color: hsl(var(--background));
+            border-bottom: 1px solid hsl(var(--border));
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: hsl(var(--text-primary));
+            text-decoration: none;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav a {
+            color: hsl(var(--text-secondary));
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .nav a:hover {
+            color: hsl(var(--text-primary));
+        }
+
+        .language-toggle {
+            background: none;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+        }
+
+        .language-toggle:hover {
+            background-color: hsl(var(--secondary));
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: hsl(var(--text-primary));
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: hsl(var(--text-secondary));
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slideshow {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        .slide-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: hsl(var(--border));
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .dot.active {
+            background-color: hsl(var(--primary));
+        }
+
+        /* Brands Section */
+        .brands {
+            padding: 4rem 0;
+            background-color: hsl(var(--section-bg));
+        }
+
+        .brands h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: hsl(var(--text-primary));
+            margin-bottom: 3rem;
+        }
+
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .brand-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .brand-logo {
+            width: 120px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 1.5rem;
+        }
+
+        .brand-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--text-primary));
+            margin-bottom: 1rem;
+        }
+
+        .brand-card p {
+            color: hsl(var(--text-secondary));
+            margin-bottom: 1.5rem;
+        }
+
+        /* Quotation Section */
+        .quotation {
+            padding: 4rem 0;
+            background-color: hsl(var(--background));
+        }
+
+        .quotation h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: hsl(var(--text-primary));
+            margin-bottom: 3rem;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: hsl(var(--text-primary));
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            font-size: 1rem;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            transition: var(--transition-smooth);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: hsl(var(--ring));
+            box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .honeypot {
+            position: absolute;
+            left: -9999px;
+            opacity: 0;
+        }
+
+        /* Location Section */
+        .location {
+            padding: 4rem 0;
+            background-color: hsl(var(--section-bg));
+        }
+
+        .location h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: hsl(var(--text-primary));
+            margin-bottom: 3rem;
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .location-info {
+            text-align: center;
+        }
+
+        .location-info h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--text-primary));
+            margin-bottom: 1rem;
+        }
+
+        .location-info p {
+            color: hsl(var(--text-secondary));
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: hsl(var(--primary-foreground) / 0.8);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: hsl(var(--primary-foreground));
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid hsl(var(--primary-foreground) / 0.2);
+            color: hsl(var(--primary-foreground) / 0.6);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background-color: hsl(var(--whatsapp));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-floating);
+            transition: var(--transition-bounce);
+            z-index: 100;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            background-color: hsl(var(--whatsapp) / 0.9);
+        }
+
+        .whatsapp-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Alert Messages */
+        .alert {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .alert.success {
+            background-color: hsl(142 76% 36% / 0.1);
+            color: hsl(142 76% 36%);
+            border: 1px solid hsl(142 76% 36% / 0.3);
+        }
+
+        .alert.error {
+            background-color: hsl(var(--destructive) / 0.1);
+            color: hsl(var(--destructive));
+            border: 1px solid hsl(var(--destructive) / 0.3);
+        }
+
+        .alert.show {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .brands h2,
+            .quotation h2,
+            .location h2 {
+                font-size: 2rem;
+            }
+
+            .whatsapp-button {
+                width: 50px;
+                height: 50px;
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .whatsapp-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">ALREEM</a>
+                <nav class="nav">
+                    <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="#brands" data-en="Brands" data-ar="العلامات التجارية">Brands</a>
+                    <a href="#quote" data-en="Quote" data-ar="عرض أسعار">Quote</a>
+                    <a href="#location" data-en="Location" data-ar="الموقع">Location</a>
+                    <a href="#contact" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </nav>
+                <button class="language-toggle" onclick="toggleLanguage()">
+                    <span id="langToggleText">عربي</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 data-en="Premium Truck Parts for IVECO, MAN & ZF" data-ar="قطع غيار الشاحنات المتميزة لإيفيكو ومان وZF">
+                Premium Truck Parts for IVECO, MAN & ZF
+            </h1>
+            <p data-en="Your trusted partner for quality commercial vehicle components" data-ar="شريكك الموثوق لمكونات المركبات التجارية عالية الجودة">
+                Your trusted partner for quality commercial vehicle components
+            </p>
+            <a href="#quote" class="btn btn-primary" data-en="Get Quote" data-ar="احصل على عرض سعر">Get Quote</a>
+            
+            <div class="slideshow">
+                <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=400&fit=crop" alt="IVECO Truck" class="slide active">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=400&fit=crop" alt="MAN Truck" class="slide">
+                <img src="https://images.unsplash.com/photo-1566473965997-3de9c817e938?w=800&h=400&fit=crop" alt="ZF Components" class="slide">
+                
+                <div class="slide-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Brands Section -->
+    <section id="brands" class="brands">
+        <div class="container">
+            <h2 data-en="Our Trusted Brands" data-ar="علاماتنا التجارية الموثوقة">Our Trusted Brands</h2>
+            <div class="brands-grid">
+                <div class="card brand-card">
+                    <img src="/lovable-uploads/feb577c6-fd54-4a22-a474-9aa07d2deb3f.png" alt="IVECO Logo" class="brand-logo">
+                    <h3 data-en="IVECO Parts" data-ar="قطع إيفيكو">IVECO Parts</h3>
+                    <p data-en="Genuine and aftermarket parts for IVECO trucks" data-ar="قطع أصلية وبديلة لشاحنات إيفيكو">
+                        Genuine and aftermarket parts for IVECO trucks
+                    </p>
+                    <a href="#quote" class="btn btn-outline" data-en="View Parts" data-ar="عرض القطع">View Parts</a>
+                </div>
+                
+                <div class="card brand-card">
+                    <img src="/lovable-uploads/3999d7d2-0e88-42f3-80d6-36b3a4aedc12.png" alt="MAN Logo" class="brand-logo">
+                    <h3 data-en="MAN Components" data-ar="مكونات MAN">MAN Components</h3>
+                    <p data-en="Quality MAN truck parts and accessories" data-ar="قطع وإكسسوارات شاحنات MAN عالية الجودة">
+                        Quality MAN truck parts and accessories
+                    </p>
+                    <a href="#quote" class="btn btn-outline" data-en="View Parts" data-ar="عرض القطع">View Parts</a>
+                </div>
+                
+                <div class="card brand-card">
+                    <img src="/lovable-uploads/69399280-60c0-4ef1-8fe1-850d894a01d4.png" alt="ZF Logo" class="brand-logo">
+                    <h3 data-en="ZF Systems" data-ar="أنظمة ZF">ZF Systems</h3>
+                    <p data-en="ZF transmission and driveline components" data-ar="مكونات ناقل الحركة ونظام القيادة ZF">
+                        ZF transmission and driveline components
+                    </p>
+                    <a href="#quote" class="btn btn-outline" data-en="View Parts" data-ar="عرض القطع">View Parts</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quotation Section -->
+    <section id="quote" class="quotation">
+        <div class="container">
+            <h2 data-en="Request a Quote" data-ar="طلب عرض سعر">Request a Quote</h2>
+            <div class="form-container">
+                <div id="alert" class="alert"></div>
+                
+                <form id="quotationForm" onsubmit="submitForm(event)">
+                    <!-- Honeypot field for spam protection -->
+                    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+                    
+                    <div class="form-group">
+                        <label for="company_name" data-en="Company Name *" data-ar="اسم الشركة *">Company Name *</label>
+                        <input type="text" id="company_name" name="company_name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="contact_person" data-en="Contact Person *" data-ar="الشخص المسؤول *">Contact Person *</label>
+                        <input type="text" id="contact_person" name="contact_person" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone" data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+966XXXXXXXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" data-en="Email Address *" data-ar="البريد الإلكتروني *">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="truck_brand" data-en="Truck Brand *" data-ar="علامة الشاحنة التجارية *">Truck Brand *</label>
+                        <select id="truck_brand" name="truck_brand" required>
+                            <option value="" data-en="Select Brand" data-ar="اختر العلامة التجارية">Select Brand</option>
+                            <option value="IVECO">IVECO</option>
+                            <option value="MAN">MAN</option>
+                            <option value="ZF">ZF</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="part_description" data-en="Part Description *" data-ar="وصف القطعة *">Part Description *</label>
+                        <textarea id="part_description" name="part_description" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity" data-en="Quantity" data-ar="الكمية">Quantity</label>
+                        <input type="number" id="quantity" name="quantity" min="1">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" data-en="Submit Request" data-ar="إرسال الطلب">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="location" class="location">
+        <div class="container">
+            <h2 data-en="Our Location" data-ar="موقعنا">Our Location</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3 data-en="Visit Our Store" data-ar="زر متجرنا">Visit Our Store</h3>
+                    <p data-en="Find us at our location in Saudi Arabia. We're here to serve all your truck parts needs." data-ar="اعثر علينا في موقعنا في المملكة العربية السعودية. نحن هنا لخدمة جميع احتياجاتك من قطع غيار الشاحنات.">
+                        Find us at our location in Saudi Arabia. We're here to serve all your truck parts needs.
+                    </p>
+                    <a href="https://maps.google.com/?q=26.461503,50.013990" target="_blank" class="btn btn-primary" data-en="View on Google Maps" data-ar="عرض على خرائط جوجل">
+                        View on Google Maps
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <div style="padding: 2rem;">
+                        <h3 data-en="Contact Information" data-ar="معلومات الاتصال">Contact Information</h3>
+                        <p><strong data-en="Address:" data-ar="العنوان:">Address:</strong><br>
+                        <span data-en="Saudi Arabia" data-ar="المملكة العربية السعودية">Saudi Arabia</span></p>
+                        <p><strong data-en="Phone:" data-ar="الهاتف:">Phone:</strong> +966504106845</p>
+                        <p><strong data-en="Business Hours:" data-ar="ساعات العمل:">Business Hours:</strong><br>
+                        <span data-en="Saturday - Thursday: 8:00 AM - 6:00 PM" data-ar="السبت - الخميس: 8:00 ص - 6:00 م">Saturday - Thursday: 8:00 AM - 6:00 PM</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 data-en="ALREEM Truck Parts" data-ar="الريم لقطع غيار الشاحنات">ALREEM Truck Parts</h3>
+                    <p data-en="Your trusted partner for quality commercial vehicle components. Specializing in IVECO, MAN, and ZF parts." data-ar="شريكك الموثوق لمكونات المركبات التجارية عالية الجودة. متخصصون في قطع إيفيكو ومان وZF.">
+                        Your trusted partner for quality commercial vehicle components. Specializing in IVECO, MAN, and ZF parts.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-en="Quick Links" data-ar="روابط سريعة">Quick Links</h3>
+                    <a href="#home" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="#brands" data-en="Our Brands" data-ar="علاماتنا التجارية">Our Brands</a>
+                    <a href="#quote" data-en="Request Quote" data-ar="طلب عرض سعر">Request Quote</a>
+                    <a href="#location" data-en="Location" data-ar="الموقع">Location</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 data-en="Contact Info" data-ar="معلومات الاتصال">Contact Info</h3>
+                    <p data-en="Phone: +966504106845" data-ar="الهاتف: +966504106845">Phone: +966504106845</p>
+                    <p data-en="Location: Saudi Arabia" data-ar="الموقع: المملكة العربية السعودية">Location: Saudi Arabia</p>
+                    <a href="https://wa.me/966504106845" target="_blank" data-en="WhatsApp Support" data-ar="دعم واتساب">WhatsApp Support</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-en="© 2024 ALREEM Truck Parts. All rights reserved." data-ar="© 2024 الريم لقطع غيار الشاحنات. جميع الحقوق محفوظة.">
+                    © 2024 ALREEM Truck Parts. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/966504106845?text=Hello%2C%20I%27m%20interested%20in%20your%20truck%20parts%20services." 
+       target="_blank" 
+       class="whatsapp-button"
+       aria-label="Contact us on WhatsApp">
+        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.687"/>
+        </svg>
+    </a>
+
+    <script>
+        // Global variables
+        let currentLanguage = 'en';
+        let slideIndex = 1;
+        let slideInterval;
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            showSlides(slideIndex);
+            autoSlides();
+            updateLanguage();
+        });
+
+        // Language Toggle
+        function toggleLanguage() {
+            currentLanguage = currentLanguage === 'en' ? 'ar' : 'en';
+            updateLanguage();
+        }
+
+        function updateLanguage() {
+            const html = document.documentElement;
+            const langToggleText = document.getElementById('langToggleText');
+            
+            // Update HTML attributes
+            html.setAttribute('lang', currentLanguage);
+            html.setAttribute('dir', currentLanguage === 'ar' ? 'rtl' : 'ltr');
+            
+            // Update toggle button text
+            langToggleText.textContent = currentLanguage === 'en' ? 'عربي' : 'English';
+            
+            // Update all translatable elements
+            const elements = document.querySelectorAll('[data-en][data-ar]');
+            elements.forEach(element => {
+                const text = element.getAttribute(`data-${currentLanguage}`);
+                if (text) {
+                    if (element.tagName === 'INPUT' && element.type === 'submit') {
+                        element.value = text;
+                    } else if (element.tagName === 'OPTION') {
+                        element.textContent = text;
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+        }
+
+        // Slideshow functionality
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName('slide');
+            const dots = document.getElementsByClassName('dot');
+            
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+            
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove('active');
+            }
+            
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove('active');
+            }
+            
+            if (slides[slideIndex - 1]) {
+                slides[slideIndex - 1].classList.add('active');
+            }
+            if (dots[slideIndex - 1]) {
+                dots[slideIndex - 1].classList.add('active');
+            }
+        }
+
+        function autoSlides() {
+            slideInterval = setInterval(() => {
+                slideIndex++;
+                if (slideIndex > document.getElementsByClassName('slide').length) {
+                    slideIndex = 1;
+                }
+                showSlides(slideIndex);
+            }, 4000);
+        }
+
+        // Form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('quotationForm');
+            const formData = new FormData(form);
+            const alert = document.getElementById('alert');
+            
+            // Security checks
+            if (formData.get('website') !== '') {
+                showAlert('Spam detected. Form submission blocked.', 'error');
+                return;
+            }
+            
+            // Validate required fields
+            const requiredFields = ['company_name', 'contact_person', 'phone', 'email', 'truck_brand', 'part_description'];
+            for (let field of requiredFields) {
+                if (!formData.get(field)) {
+                    showAlert(`Please fill in the ${field.replace('_', ' ')} field.`, 'error');
+                    return;
+                }
+            }
+            
+            // Validate email format
+            const email = formData.get('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showAlert('Please enter a valid email address.', 'error');
+                return;
+            }
+            
+            // Validate phone format (Saudi Arabia)
+            const phone = formData.get('phone');
+            const phoneRegex = /^\+966[0-9]{9}$/;
+            if (!phoneRegex.test(phone)) {
+                showAlert('Please enter a valid Saudi phone number (+966XXXXXXXXX).', 'error');
+                return;
+            }
+            
+            // Prepare data for webhook
+            const data = {
+                company_name: formData.get('company_name'),
+                contact_person: formData.get('contact_person'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                truck_brand: formData.get('truck_brand'),
+                part_description: formData.get('part_description'),
+                quantity: formData.get('quantity') || '',
+                timestamp: new Date().toISOString(),
+                language: currentLanguage
+            };
+            
+            // Submit to webhook
+            fetch('https://n8n.ahmed.today/webhook/ea1d1ff6-fbb0-4149-8226-239dc2fbbd83', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    showAlert(
+                        currentLanguage === 'en' 
+                            ? 'Thank you! Your quote request has been submitted successfully. We will contact you soon.'
+                            : 'شكراً لك! تم إرسال طلب عرض الأسعار بنجاح. سنتواصل معك قريباً.',
+                        'success'
+                    );
+                    form.reset();
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showAlert(
+                    currentLanguage === 'en'
+                        ? 'There was an error submitting your request. Please try again or contact us directly.'
+                        : 'حدث خطأ أثناء إرسال طلبك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.',
+                    'error'
+                );
+            });
+        }
+
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = `alert ${type} show`;
+            
+            setTimeout(() => {
+                alert.classList.remove('show');
+            }, 5000);
+        }
+
+        // Smooth scrolling for navigation links
+        document.addEventListener('click', function(e) {
+            if (e.target.getAttribute('href') && e.target.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+
+        // Input sanitization
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        // Rate limiting (simple client-side implementation)
+        let lastSubmission = 0;
+        function checkRateLimit() {
+            const now = Date.now();
+            if (now - lastSubmission < 3000) {
+                return false;
+            }
+            lastSubmission = now;
+            return true;
+        }
+    </script>
+</body>
 </html>
